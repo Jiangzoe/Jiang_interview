@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两类布局——定宽</title>
+    <style>
+        #header, #footer {
+            width: 100%;
+            height: 50px;
+            background-color: blue;
+        }
+        #page {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #aside {
+            height: 200px;
+            width: 50px;
+            background-color: green;
+        }
+        #main {
+            height: 200px;
+            background-color: yellow;
+            width: calc(100% - 50px);
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <header id="header">header</header>
+        <aside id="aside">aside</aside>
+        <main id="main">main</main>
+        <footer id="footer">footer</footer>
+    </div>
+</body>
+</html>
