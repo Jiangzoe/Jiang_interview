@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两类布局——不定宽</title>
+    <style>
+        #page {
+            display: flex;
+        }
+        #aside {
+            height: 200px;
+            background-color: green;
+        }
+        #main {
+            height: 200px;
+            background-color: yellow;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <aside id="aside">aside</aside>
+        <main id="main">main</main>
+    </div>
+</body>
+</html>
