@@ -1,25 +1,17 @@
-function jsonp (url) {
-    let json
-    let script = document.createElement('script')
-    script.src = url + '?callback = fn'
-    window.fn = function (data) {
-        json = data
-    }
-    document.body.appendChild(script)
-    return new Promise((resolve, reject) => {
-        script.onload = function (e) {
-            resolve(json)
+function jsonp(url,data,callback) {
+    return new Promise((resovle) => {
+        var script = document.createElement('script')
+        url += `?jsonpcallback=${callback}`
+        if (data) {
+            Object.keys(data).forEach(key => {
+                url += `&${key}=${data[key]}`
+            })
         }
-        script.onerror = function (e) {
-            reject(json)
+        script.src = url
+        document.head.appendChild(script)
+        window[callback] = function(data) {
+            resovle(data)
         }
-
+        script.parentNode.removeChild(script)
     })
 }
-
-jsonp('http://localhost:8082').then(data => {
-    console.log(data)
-    throw('err')
-}).catch(err => {
-    console.log(err)
-})
